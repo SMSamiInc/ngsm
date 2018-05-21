@@ -116,6 +116,46 @@
           }
         }
       }
+    },
+    "ngsm": {
+      "root": "projects/ngsm",
+      "sourceRoot": "projects/ngsm/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngsm/tsconfig.lib.json",
+            "project": "projects/ngsm/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngsm/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngsm/src/test.ts",
+            "tsConfig": "projects/ngsm/tsconfig.spec.json",
+            "karmaConfig": "projects/ngsm/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngsm/tsconfig.lib.json",
+              "projects/ngsm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngsmsami-sandbox"
